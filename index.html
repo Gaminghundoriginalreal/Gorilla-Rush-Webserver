@@ -11,16 +11,19 @@
             padding: 0;
             background-color: #f4f4f9;
             color: #333;
+            overflow-x: hidden;
         }
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 20px;
             text-align: center;
+            animation: fadeInDown 1s;
         }
         main {
             padding: 20px;
             text-align: center;
+            animation: fadeInUp 1s;
         }
         footer {
             background-color: #333;
@@ -30,15 +33,45 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+            animation: fadeInUp 1s;
         }
         a {
             color: #4CAF50;
             text-decoration: none;
+            transition: color 0.3s ease;
         }
         a:hover {
             text-decoration: underline;
+            color: #2E7D32;
+        }
+        #datenschutz {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            width: 80%;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
+    <script>
+        function toggleDatenschutz() {
+            const datenschutzSection = document.getElementById('datenschutz');
+            datenschutzSection.style.display = datenschutzSection.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
 </head>
 <body>
 
@@ -48,15 +81,15 @@
 
 <main>
     <p>Tritt unserem Discord bei, um Teil unserer Community zu werden:</p>
-    <p><a href="https://discord.gg/zuJwyKWUdF" target="_blank">Discord</a></p>
-    <p><a href="#datenschutz">Datenschutzrichtlinie anzeigen</a></p>
+    <p><a href="https://discord.gg/zuJwyKWUdF" target="_blank">https://discord.gg/zuJwyKWUdF</a></p>
+    <p><a href="javascript:void(0);" onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</a></p>
 </main>
 
 <footer>
     <p>&copy; 2024 Gorilla Rush. Alle Rechte vorbehalten.</p>
 </footer>
 
-<section id="datenschutz" style="padding: 20px; background-color: #fff; margin: 20px auto; border: 1px solid #ccc; width: 80%;">
+<section id="datenschutz">
     <h2>Datenschutzrichtlinie</h2>
     <p>Vielen Dank, dass Sie Gorilla Rush spielen! Der Schutz Ihrer Daten ist uns wichtig. In dieser Datenschutzrichtlinie erklären wir, welche Daten wir erfassen, wie wir sie verwenden und welche Rechte Sie haben.</p>
     <h3>Erfassung und Nutzung von Daten</h3>
