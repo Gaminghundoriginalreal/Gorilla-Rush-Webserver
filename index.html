@@ -9,16 +9,17 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
             color: #333;
             overflow-x: hidden;
         }
         header {
-            background-color: #4CAF50;
+            background-color: black;
             color: white;
-            padding: 20px;
+            padding: 10px;
             text-align: center;
-            animation: fadeInDown 1s;
+            animation: slideInFromLeft 1s;
         }
         main {
             padding: 20px;
@@ -26,7 +27,7 @@
             animation: fadeInUp 1s;
         }
         footer {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
             padding: 10px 0;
@@ -38,7 +39,8 @@
         a {
             color: #4CAF50;
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
         }
         a:hover {
             text-decoration: underline;
@@ -47,10 +49,12 @@
         #datenschutz {
             display: none;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             margin: 20px auto;
             border: 1px solid #ccc;
+            border-radius: 15px;
             width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             animation: fadeIn 0.5s;
         }
         @keyframes fadeIn {
@@ -61,9 +65,23 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #2E7D32;
+            transform: scale(1.05);
         }
     </style>
     <script>
@@ -76,13 +94,14 @@
 <body>
 
 <header>
+    <div style="border-bottom: 2px solid white; padding: 5px 0;"></div>
     <h1>Willkommen bei Gorilla Rush!</h1>
 </header>
 
 <main>
-    <p>Tritt unserem Discord bei, um Teil unserer Community zu werden:</p>
-    <p><a href="https://discord.gg/zuJwyKWUdF" target="_blank">https://discord.gg/zuJwyKWUdF</a></p>
-    <p><a href="javascript:void(0);" onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</a></p>
+    <p>Tritt unserer Community bei:</p>
+    <p><a href="https://discord.gg/zuJwyKWUdF" target="_blank">Discord</a></p>
+    <p><button onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</button></p>
 </main>
 
 <footer>
