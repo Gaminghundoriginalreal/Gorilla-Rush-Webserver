@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gorilla Rush Forum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1c1c1c;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.5em;
+            border-bottom: 2px solid #444;
+        }
+        main {
+            padding: 20px;
+        }
+        .post-form {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .post-form input,
+        .post-form textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+        }
+        .post-form button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .post {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .post img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>Gorilla Rush Forum</header>
+    <main>
+        <div class="post-form">
+            <h3>Neuen Beitrag erstellen</h3>
+            <form id="postForm">
+                <input type="text" id="title" placeholder="Titel" required>
+                <textarea id="content" placeholder="Inhalt" rows="4" required></textarea>
+                <input type="file" id="image" accept="image/*">
+                <button type="submit">Beitrag erstellen</button>
+            </form>
+        </div>
+        <div id="posts"></div>
+    </main>
+    <script>
+        document.getElementById('postForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('title', document.getElementById('title').value);
+            formData.append('content', document.getElementById('content').value);
+            const image = document.getElementById('image').files[0];
+            if (image) {
+                formData.append('image', image);
+            }
+            const response = await fetch('/api/posts', {
+                method: 'POST',
+                body: formData,
+            });
+            if (response.ok) {
+                loadPosts();
+            } else {
+                alert('Fehler beim Erstellen des Beitrags');
+            }
+        });
+
+        async function loadPosts() {
+            const response = await fetch('/api/posts');
+            const posts = await response.json();
+            const postsContainer = document.getElementById('posts');
+            postsContainer.innerHTML = posts.map(post => `
+                <div class="post">
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                    ${post.image ? `<img src="/uploads/${post.image}" alt="Post Image">` : ''}
+                </div>
+            `).join('');
+        }
+
+        loadPosts();
+    </script>
+</body>
+</html>
