@@ -11,77 +11,68 @@
             padding: 0;
             background: url('background.png') no-repeat center center fixed;
             background-size: cover;
-            color: #333;
-            overflow-x: hidden;
+            color: #ccc;
+            background-color: #121212;
         }
         header {
-            background-color: black;
-            color: white;
+            background-color: #1c1c1c;
+            color: #fff;
             padding: 10px;
             text-align: center;
-            animation: slideInFromLeft 1s;
+            border-bottom: 2px solid #444;
         }
         main {
             padding: 20px;
             text-align: center;
-            animation: fadeInUp 1s;
         }
         footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background-color: #1c1c1c;
+            color: #fff;
             text-align: center;
             padding: 10px 0;
             position: fixed;
             bottom: 0;
             width: 100%;
-            animation: fadeInUp 1s;
         }
         a {
             color: #4CAF50;
             text-decoration: none;
             font-size: 1.2em;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
         a:hover {
-            text-decoration: underline;
             color: #2E7D32;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #444;
+            transform: scale(1.05);
         }
         #datenschutz {
             display: none;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(0, 0, 0, 0.8);
             margin: 20px auto;
-            border: 1px solid #ccc;
+            border: 1px solid #444;
             border-radius: 15px;
             width: 80%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 0.5s;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes slideInFromLeft {
-            from { opacity: 0; transform: translateX(-100%); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        button:hover {
-            background-color: #2E7D32;
-            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
     </style>
     <script>
@@ -94,14 +85,15 @@
 <body>
 
 <header>
-    <div style="border-bottom: 2px solid white; padding: 5px 0;"></div>
     <h1>Willkommen bei Gorilla Rush!</h1>
 </header>
 
 <main>
-    <p>Tritt unserer Community bei:</p>
-    <p><a href="https://discord.gg/zuJwyKWUdF" target="_blank">Discord</a></p>
-    <p><button onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</button></p>
+    <div class="button-container">
+        <p><a href="https://discord.gg/zuJwyKWUdF" target="_blank">Discord</a></p>
+        <p><a href="https://gorilla-rush.gaminghund.de/forum" target="_blank" class="forum-button">Forum</a></p>
+        <p><button onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</button></p>
+    </div>
 </main>
 
 <footer>
