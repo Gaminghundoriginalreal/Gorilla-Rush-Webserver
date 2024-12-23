@@ -13,94 +13,84 @@
             background-size: cover;
             color: #ffffff;
             overflow-x: hidden;
+            animation: fadeInBackground 2s ease;
+        }
+        @keyframes fadeInBackground {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         header {
-            background-color: #1c1c1c;
-            color: #fff;
+            background-color: black;
+            color: white;
             padding: 10px;
             text-align: center;
-            border-bottom: 2px solid #444;
+            animation: slideInFromTop 1s ease-out;
+        }
+        @keyframes slideInFromTop {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         main {
             padding: 20px;
             text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .button-container {
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #2E7D32;
+            transform: scale(1.05);
         }
         footer {
-            background-color: #1c1c1c;
-            color: #fff;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
             text-align: center;
             padding: 10px 0;
             position: fixed;
             bottom: 0;
             width: 100%;
-        }
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #2E7D32;
-        }
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        button:hover {
-            background-color: #444;
-            transform: scale(1.05);
-        }
-        #datenschutz {
-            display: none;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            margin: 20px auto;
-            border: 1px solid #444;
-            border-radius: 15px;
-            width: 80%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1.5s ease;
         }
     </style>
-    <script>
-        function toggleDatenschutz() {
-            const datenschutzSection = document.getElementById('datenschutz');
-            datenschutzSection.style.display = datenschutzSection.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
 </head>
 <body>
 
 <header>
+    <div style="border-bottom: 2px solid white; padding: 5px 0;"></div>
     <h1>Willkommen bei Gorilla Rush!</h1>
 </header>
 
 <main>
     <div class="button-container">
-        <p><a href="https://discord.gg/zuJwyKWUdF" target="_blank">Discord</a></p>
-        <p><a href="https://gorilla-rush.gaminghund.de/forum" target="_blank" class="forum-button">Forum</a></p>
-        <p><button onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</button></p>
+        <a href="https://discord.gg/zuJwyKWUdF" target="_blank" class="button">Discord</a>
+        <a href="https://gorilla-rush.gaminghund.de/forum" target="_blank" class="button">Forum</a>
     </div>
+    <p><button class="button" onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</button></p>
 </main>
 
 <footer>
     <p>&copy; 2024 Gorilla Rush. Alle Rechte vorbehalten.</p>
 </footer>
 
-<section id="datenschutz">
+<section id="datenschutz" style="display: none;">
     <h2>Datenschutzrichtlinie</h2>
     <p>Vielen Dank, dass Sie Gorilla Rush spielen! Der Schutz Ihrer Daten ist uns wichtig. In dieser Datenschutzrichtlinie erklären wir, welche Daten wir erfassen, wie wir sie verwenden und welche Rechte Sie haben.</p>
     <h3>Erfassung und Nutzung von Daten</h3>
@@ -120,6 +110,13 @@
     <h3>Änderungen an der Datenschutzrichtlinie</h3>
     <p>Diese Richtlinie kann von Zeit zu Zeit aktualisiert werden. Wir empfehlen Ihnen, sie regelmäßig zu überprüfen.</p>
 </section>
+
+<script>
+    function toggleDatenschutz() {
+        const datenschutzSection = document.getElementById('datenschutz');
+        datenschutzSection.style.display = datenschutzSection.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
 
 </body>
 </html>
