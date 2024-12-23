@@ -20,7 +20,7 @@
             to { opacity: 1; }
         }
         header {
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
             padding: 10px;
             text-align: center;
@@ -69,7 +69,7 @@
             width: 100%;
             animation: fadeInUp 1.5s ease;
         }
-        #datenschutz {
+        #datenschutz, #haftungsausschuss {
             animation: fadeInUp 1s ease;
             margin: 20px;
             padding: 20px;
@@ -90,7 +90,10 @@
         <a href="https://discord.gg/zuJwyKWUdF" target="_blank" class="button">Discord</a>
         <a href="https://gorilla-rush.gaminghund.de/forum" target="_blank" class="button">Forum</a>
     </div>
-    <p><button class="button" onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</button></p>
+    <p>
+        <button class="button" onclick="toggleDatenschutz()">Datenschutzrichtlinie anzeigen</button>
+        <button class="button" onclick="toggleHaftungsausschuss()">Haftungsausschuss anzeigen</button>
+    </p>
 </main>
 
 <footer>
@@ -118,10 +121,22 @@
     <p>Diese Richtlinie kann von Zeit zu Zeit aktualisiert werden. Wir empfehlen Ihnen, sie regelmäßig zu überprüfen.</p>
 </section>
 
+<section id="haftungsausschuss" style="display: none;">
+    <h2>Haftungsausschluss</h2>
+    <p>Das Spiel Gorilla Rush enthält flackernde Lichter und andere visuelle Effekte, die bei empfindlichen Personen gesundheitliche Probleme, einschließlich epileptischer Anfälle, auslösen können. Wenn Sie sich unwohl fühlen, beenden Sie das Spiel sofort und konsultieren Sie einen Arzt.</p>
+    <h3>Hinweis</h3>
+    <p>Der Entwickler von Gorilla Rush übernimmt keine Haftung für gesundheitliche Schäden, die durch die Nutzung des Spiels entstehen könnten. Die Nutzung erfolgt auf eigene Gefahr.</p>
+</section>
+
 <script>
     function toggleDatenschutz() {
         const datenschutzSection = document.getElementById('datenschutz');
         datenschutzSection.style.display = datenschutzSection.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleHaftungsausschuss() {
+        const haftungsausschussSection = document.getElementById('haftungsausschuss');
+        haftungsausschussSection.style.display = haftungsausschussSection.style.display === 'none' ? 'block' : 'none';
     }
 </script>
 
